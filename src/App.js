@@ -1,22 +1,15 @@
-import logo from './logo.svg';
+import {WeatherApp} from './components/fetch.js';
+import React, { useState, useEffect } from 'react';
+import Status from './components/status.jsx';
 import './App.css';
 
 function App() {
+  let [sharedState, setSharedState] = useState('')
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Status sharedState={sharedState}/>
+        <WeatherApp sharedState={sharedState} setSharedState={setSharedState}/>
       </header>
     </div>
   );
