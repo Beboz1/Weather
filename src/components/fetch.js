@@ -23,7 +23,6 @@ const WeatherApp = ({sharedState, setSharedState}) => {
       }
       const data = await response.json();
       status=data.weather[0].main
-      console.log(status)
       setSharedState(status)
       setWeatherData(data);
     } catch (error) {
@@ -31,15 +30,16 @@ const WeatherApp = ({sharedState, setSharedState}) => {
     }
   };
   return (
-    <div>
-      <h1>Weather App</h1>
+    <div className="weatherInfo">
+      <div className="search">
+      <h4>Choose city</h4>
       <input
         type="text"
         value={city}
         onChange={handleChange}
         placeholder="Enter city"
       />
-      <button onClick={() => fetchWeatherData(city)}>Get Weather</button>
+      </div>
       {weatherData && (
         <div>
           <h2>{weatherData.name}</h2>
@@ -51,5 +51,5 @@ const WeatherApp = ({sharedState, setSharedState}) => {
     </div>
   );
 };
-
+//<button onClick={() => fetchWeatherData(city)}>Get Weather</button>
 export {WeatherApp,status};
